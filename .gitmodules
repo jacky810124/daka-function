@@ -1,0 +1,3 @@
+[submodule "functions/daka"]
+	path = functions/daka
+	url = git@github.com:jyunhanlin/daka.git
