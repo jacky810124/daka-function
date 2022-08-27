@@ -19,9 +19,7 @@ jobs:
       - name: Test
         run: cd functions/daka && ls -al
       - name: Install dependencies
-        run: |
-          npm i firebase-tools --location=global &&
-          npm i
+        run: npm i firebase-tools --location=global && npm i
       - name: Deploy
         env:
           FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
