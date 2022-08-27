@@ -20,7 +20,7 @@ jobs:
         run: cd functions/daka && ls -al
       - name: Install dependencies
         run: |
-          npm i firebase-tools --global &&
+          npm i firebase-tools --location=global &&
           npm i
       - name: Deploy
         env:
