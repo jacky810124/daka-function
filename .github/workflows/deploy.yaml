@@ -8,7 +8,8 @@ jobs:
     name: Deploy to firebase
     runs-on: ubuntu-latest
     defaults:
-      working-directory: functions
+      run:
+        working-directory: functions
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,7 +19,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: npm
       - name: Test
         run: cd daka && ls -al && echo $(git rev-parse --short=7 HEAD)
       - name: Install dependencies
