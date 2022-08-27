@@ -1,0 +1,27 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    name: Deploy to firebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
+      - name: Test
+        run: cd functions/daka && ls -al
+      - name: Install dependencies
+        with:
+          node-version: 16
+        run: |
+          npm i firebase-tools --global &&
+          npm i
+      - name: Deploy
+        env:
+          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+        run: npm run deploy --token "$FIREBASE_TOKEN"
