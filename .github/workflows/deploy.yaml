@@ -7,11 +7,12 @@ jobs:
     name: Deploy to firebase
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           ssh-key: ${{ secrets.GITHUB_TOKEN }}
           submodules: true
+      - name: Test
         run: cd functions/daka && ls -al
       - name: Install dependencies
         with:
