@@ -13,11 +13,13 @@ jobs:
         with:
           ssh-key: ${{ secrets.GITHUB_TOKEN }}
           submodules: true
+      - name: Setup node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Test
         run: cd functions/daka && ls -al
       - name: Install dependencies
-        with:
-          node-version: 16
         run: |
           npm i firebase-tools --global &&
           npm i
